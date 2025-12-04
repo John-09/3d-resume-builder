@@ -12,32 +12,33 @@ export const RoomScene = () => {
 
   return (
     <>
-      {/* Floor */}
-      <Floor />
+      {/* Big Floor */}
+      <Floor position={[0, 0, 0]} />
 
-      {/* Back Wall */}
-      <Wall position={[0, 1, -3]} />
+      {/* Big Walls */}
+      <Wall position={[0, 5, -20]} scale={[1, 5, 1]} />
+      <Wall
+        position={[-20, 5, 0]}
+        rotation={[0, Math.PI / 2, 0]}
+        scale={[1, 5, 1]}
+      />
+      <Wall
+        position={[20, 5, 0]}
+        rotation={[0, -Math.PI / 2, 0]}
+        scale={[1, 5, 1]}
+      />
 
-      {/* Left Wall */}
-      <Wall position={[-3, 1, 0]} rotation={[0, Math.PI / 2, 0]} />
+      {/* Cubes placed far apart */}
+      <PlaceholderObject position={[0, 1.2, -5]} text="" />
 
-      {/* Right Wall */}
-      <Wall position={[3, 1, 0]} rotation={[0, -Math.PI / 2, 0]} />
+      <PlaceholderObject position={[10, 1.2, 0]} text="Skills" />
 
-      {/* Placeholder interactive objects */}
-      <PlaceholderObject position={[0, 1, -1.5]} text="Experience" />
-      <PlaceholderObject position={[1.5, 1, 0]} text="Skills" />
-      <PlaceholderObject position={[-1.5, 1, 0]} text="Projects" />
+      <PlaceholderObject position={[-10, 1.2, 0]} text="Projects" />
 
-      {/* ------------------------------------------------------
-          HOLOGRAM PANELS (Appear based on activePanel)
-         ------------------------------------------------------ */}
-
-      <SkillsPanel visible={activePanel === "skills"} />
-
-      <ExperiencePanel visible={activePanel === "experience"} />
-
+      {/* Hologram Panels positioned above cubes */}
       <ProjectsPanel visible={activePanel === "projects"} />
+      <ExperiencePanel visible={activePanel === "experience"} />
+      <SkillsPanel visible={activePanel === "skills"} />
     </>
   );
 };

@@ -4,19 +4,15 @@ import * as THREE from "three";
 import { useAppStore } from "../../../shared/store/useAppStore";
 
 export const CameraController = () => {
-  const camera = useThree((state) => state.camera);
+  const camera = useThree((s) => s.camera);
   const target = useRef(new THREE.Vector3());
 
   const cameraTarget = useAppStore((s) => s.cameraTarget);
 
   useFrame(() => {
     target.current.set(...cameraTarget);
-
-    // Smooth camera movement
     camera.position.lerp(target.current, 0.05);
-
-    // Always look at center of room
-    camera.lookAt(0, 1, 0);
+    camera.lookAt(0, 2, 0);
   });
 
   return null;

@@ -1,11 +1,9 @@
 import type { JSX } from "react";
 
-type MeshProps = JSX.IntrinsicElements["mesh"];
-
-export const Wall = (props: MeshProps) => {
+export const Wall = (props: JSX.IntrinsicElements["mesh"]) => {
   return (
     <mesh {...props} receiveShadow castShadow>
-      <boxGeometry args={[6, 2, 0.2]} />
+      <boxGeometry args={[40, 20, 0.5]} />
       <meshStandardMaterial color="#222" />
     </mesh>
   );

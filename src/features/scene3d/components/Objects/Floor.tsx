@@ -1,11 +1,9 @@
 import type { JSX } from "react";
 
-type MeshProps = JSX.IntrinsicElements["mesh"];
-
-export const Floor = (props: MeshProps) => {
+export const Floor = (props: JSX.IntrinsicElements["mesh"]) => {
   return (
-    <mesh {...props} receiveShadow position={[0, 0, 0]}>
-      <boxGeometry args={[10, 0.1, 10]} />
+    <mesh {...props} receiveShadow>
+      <boxGeometry args={[40, 0.5, 40]} />
       <meshStandardMaterial color="#111" />
     </mesh>
   );

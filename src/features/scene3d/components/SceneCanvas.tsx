@@ -7,20 +7,22 @@ export const SceneCanvas = () => {
   return (
     <Canvas
       shadows
-      camera={{ position: [0, 1.5, 5], fov: 55 }}
+      camera={{ position: [0, 3, 12], fov: 45 }}
       style={{
         width: "100vw",
         height: "100vh",
+        display: "block",
+        background: "black",
       }}
     >
       {/* Lights */}
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[5, 10, 5]} intensity={1.2} castShadow />
+      <ambientLight intensity={1} />
+      <directionalLight position={[10, 20, 10]} intensity={2} castShadow />
 
-      {/* Smooth camera controller */}
+      {/* Camera Logic */}
       <CameraController />
 
-      {/* 3D room content */}
+      {/* Actual Scene */}
       <RoomScene />
     </Canvas>
   );

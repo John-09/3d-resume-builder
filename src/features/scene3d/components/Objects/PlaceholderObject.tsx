@@ -1,23 +1,20 @@
 import { Text } from "@react-three/drei";
 import type { JSX } from "react";
 
-type MeshProps = JSX.IntrinsicElements["mesh"];
-
-type Props = MeshProps & {
-  text: string;
-};
-
-export const PlaceholderObject = ({ text, ...props }: Props) => {
+export const PlaceholderObject = ({
+  text,
+  ...props
+}: JSX.IntrinsicElements["group"] & { text: string }) => {
   return (
     <group {...props}>
       <mesh castShadow>
-        <boxGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color="#444" />
+        <boxGeometry args={[4, 4, 4]} />
+        <meshStandardMaterial color="#333" />
       </mesh>
 
       <Text
-        position={[0, 0.8, 0]}
-        fontSize={0.3}
+        position={[0, 3, 0]}
+        fontSize={0.8}
         color="white"
         anchorX="center"
         anchorY="middle"
