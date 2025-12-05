@@ -18,7 +18,7 @@
 //   return null;
 // };
 
-import { useThree, useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useAppStore } from "../../../shared/store/useAppStore";
 import * as THREE from "three";
 
@@ -27,21 +27,20 @@ export const CameraController = () => {
   const cameraTarget = useAppStore((s) => s.cameraTarget);
   const currentSection = useAppStore((s) => s.currentSection);
 
-  // Lookup table for where the camera should look
-  const lookTargets: Record<string, [number, number, number]> = {
-    home: [0, 2, 0],
-    projects: [-12, 2, 0],
-    experience: [0, 2, -5],
-    skills: [12, 2, 0],
+  // Where the camera should look for each section
+  const lookTargets = {
+    home: new THREE.Vector3(0, 2, 0),
+    projects: new THREE.Vector3(-12, 2, 0),
+    experience: new THREE.Vector3(0, 2, -5),
+    skills: new THREE.Vector3(12, 2, 0),
   };
 
   useFrame(() => {
     // Smooth camera position
     camera.position.lerp(new THREE.Vector3(...cameraTarget), 0.05);
 
-    // Smooth look-at toward the active cube
-    const lookAt = new THREE.Vector3(...lookTargets[currentSection]);
-    camera.lookAt(lookAt);
+    // Smooth camera orientation
+    camera.lookAt(lookTargets[currentSection]);
   });
 
   return null;

@@ -77,25 +77,25 @@ export function useVoiceCommands(opts: UseVoiceCommandsOptions = {}) {
     if (text.includes("skills") || text.includes("skill")) {
       setSection("skills" as Section);
       setActivePanel("skills" as Section);
-      setFocusObject(null);
+      // setFocusObject(null);
       return;
     }
     if (text.includes("experience") || text.includes("experience")) {
       setSection("experience" as Section);
       setActivePanel("experience" as Section);
-      setFocusObject(null);
+      // setFocusObject(null);
       return;
     }
     if (text.includes("project") || text.includes("project")) {
       setSection("projects" as Section);
       setActivePanel("projects" as Section);
-      setFocusObject(null);
+      // setFocusObject(null);
       return;
     }
     if (text.includes("home") || text.includes("entrance") || text.includes("back")) {
       setSection("home" as Section);
       setActivePanel(null);
-      setFocusObject(null);
+      // setFocusObject(null);
       return;
     }
     if (text.includes("toggle audio") || text.includes("mute") || text.includes("unmute")) {
