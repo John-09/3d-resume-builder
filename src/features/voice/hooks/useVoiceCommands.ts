@@ -80,13 +80,13 @@ export function useVoiceCommands(opts: UseVoiceCommandsOptions = {}) {
       setFocusObject(null);
       return;
     }
-    if (text.includes("experience") || text.includes("work")) {
+    if (text.includes("experience") || text.includes("experience")) {
       setSection("experience" as Section);
       setActivePanel("experience" as Section);
       setFocusObject(null);
       return;
     }
-    if (text.includes("project") || text.includes("projects")) {
+    if (text.includes("project") || text.includes("project")) {
       setSection("projects" as Section);
       setActivePanel("projects" as Section);
       setFocusObject(null);
