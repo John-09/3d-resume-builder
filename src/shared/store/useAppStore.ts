@@ -10,9 +10,10 @@ import type { UISlice, VoiceSlice, SceneSlice, AudioSlice } from "./types";
 
 type AppStore = UISlice & VoiceSlice & SceneSlice & AudioSlice;
 
-export const useAppStore = create<AppStore>()((set) => ({
-  ...createUISlice(set),
-  ...createVoiceSlice(set),
-  ...createSceneSlice(set),
-  ...createAudioSlice(set),
+export const useAppStore = create<AppStore>()((set, get) => ({
+  ...createUISlice(set, get),
+  ...createVoiceSlice(set, get),
+  ...createSceneSlice(set, get),
+  ...createAudioSlice(set, get),
 }));
+

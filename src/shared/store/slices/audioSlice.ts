@@ -1,13 +1,43 @@
-// src/shared/store/slices/audioSlice.ts
-import type { AudioSlice } from "../types";
+import type { StateCreator } from "zustand";
 
-export const createAudioSlice = (set: any): AudioSlice => ({
-  audioLevel: 0,
-  isAudioEnabled: true,
-  reactiveIntensity: 1,
+export type AudioSlice = {
+  audioEnabled: boolean;
+  toggleAudio: () => void;
 
-  setAudioLevel: (level) => set({ audioLevel: level }),
-  toggleAudio: () =>
-    set((s: AudioSlice) => ({ isAudioEnabled: !s.isAudioEnabled })),
-  setReactiveIntensity: (val) => set({ reactiveIntensity: val }),
+  playEffect: (name: string) => void;
+  currentAmbient: HTMLAudioElement | null;
+  setAmbient: (audio: HTMLAudioElement | null) => void;
+};
+
+export const createAudioSlice: StateCreator<any, [], [], AudioSlice> = (
+  set,
+  get
+) => ({
+  audioEnabled: true,
+
+  toggleAudio: () => {
+    const enabled = get().audioEnabled;
+
+    if (enabled && get().currentAmbient) {
+      get().currentAmbient.pause();
+    } else if (!enabled && get().currentAmbient) {
+      get().currentAmbient.play().catch(() => {});
+    }
+
+    set({ audioEnabled: !enabled });
+  },
+
+  playEffect: (name: string) => {
+    if (!get().audioEnabled) return;
+
+    try {
+      const audio = new Audio(`/audio/${name}.mp3`);
+      audio.volume = 0.7;
+      audio.play().catch(() => {});
+    } catch {}
+  },
+
+  currentAmbient: null,
+
+  setAmbient: (audio) => set({ currentAmbient: audio }),
 });

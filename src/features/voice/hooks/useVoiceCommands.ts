@@ -74,42 +74,59 @@ export function useVoiceCommands(opts: UseVoiceCommandsOptions = {}) {
     }
 
     // Basic default parsing (fallback) — common phrases
-    if (text.includes("skills") || text.includes("skill")) {
-      setSection("skills" as Section);
-      setActivePanel("skills" as Section);
-      // setFocusObject(null);
-      return;
-    }
-    if (text.includes("experience") || text.includes("experience")) {
-      setSection("experience" as Section);
-      setActivePanel("experience" as Section);
-      // setFocusObject(null);
-      return;
-    }
-    if (text.includes("project") || text.includes("project")) {
-      setSection("projects" as Section);
-      setActivePanel("projects" as Section);
-      // setFocusObject(null);
-      return;
-    }
-    if (text.includes("home") || text.includes("entrance") || text.includes("back")) {
-      setSection("home" as Section);
-      setActivePanel(null);
-      // setFocusObject(null);
-      return;
-    }
-    if (text.includes("toggle audio") || text.includes("mute") || text.includes("unmute")) {
-      toggleAudio();
-      return;
-    }
-    if (text.includes("increase intensity") || text.includes("make it stronger")) {
-      setReactiveIntensity((v) => Math.min(3, v + 0.4));
-      return;
-    }
-    if (text.includes("decrease intensity") || text.includes("make it softer")) {
-      setReactiveIntensity((v) => Math.max(0, v - 0.4));
-      return;
-    }
+// Basic default parsing (fallback) — common phrases
+if (text.includes("skills") || text.includes("skill")) {
+  setSection("skills" as Section);
+  setActivePanel("skills" as Section);
+  // setFocusObject(null);
+  useAppStore.getState().playEffect("voice_success");
+  return;
+}
+
+if (text.includes("experience") || text.includes("experiences")) {
+  setSection("experience" as Section);
+  setActivePanel("experience" as Section);
+  // setFocusObject(null);
+  useAppStore.getState().playEffect("voice_success");
+  return;
+}
+
+if (text.includes("project") || text.includes("projects")) {
+  setSection("projects" as Section);
+  setActivePanel("projects" as Section);
+  // setFocusObject(null);
+  useAppStore.getState().playEffect("voice_success");
+  return;
+}
+
+if (text.includes("home") || text.includes("entrance") || text.includes("back")) {
+  setSection("home" as Section);
+  setActivePanel(null);
+  // setFocusObject(null);
+  useAppStore.getState().playEffect("voice_success");
+  return;
+}
+
+if (text.includes("toggle audio") || text.includes("mute") || text.includes("unmute")) {
+  toggleAudio();
+  return;
+}
+
+if (text.includes("increase intensity") || text.includes("make it stronger")) {
+  setReactiveIntensity((v) => Math.min(3, v + 0.4));
+  useAppStore.getState().playEffect("voice_success");
+  return;
+}
+
+if (text.includes("decrease intensity") || text.includes("make it softer")) {
+  setReactiveIntensity((v) => Math.max(0, v - 0.4));
+  useAppStore.getState().playEffect("voice_success");
+  return;
+}
+
+// Unknown command
+useAppStore.getState().playEffect("voice_unknown");
+
 
     // If nothing matched, optionally you can show "I didn't get that" visually.
     // For now we simply store the last command and do nothing.

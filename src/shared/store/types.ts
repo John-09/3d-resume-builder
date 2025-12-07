@@ -35,8 +35,12 @@ export interface AudioSlice {
   audioLevel: number;
   isAudioEnabled: boolean;
   reactiveIntensity: number;
+  audioEnabled:boolean,
+
 
   setAudioLevel: (level: number) => void;
   toggleAudio: () => void;
   setReactiveIntensity: (val: number) => void;
+  setAmbient:(audio: HTMLAudioElement | null) => void
+  playEffect: (effectName: string) => void;
 }

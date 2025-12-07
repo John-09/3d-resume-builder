@@ -19,7 +19,8 @@ import type { SceneSlice } from "../types";
 
 import { ScenePositions } from "../../../features/scene3d/config/scenePositions";
 
-export const createSceneSlice = (set) => ({
+
+export const createSceneSlice = (set: any, get: any):any => ({
   currentSection: "home",
   activePanel: null,
 

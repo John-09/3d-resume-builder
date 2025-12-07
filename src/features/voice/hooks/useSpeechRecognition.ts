@@ -1,5 +1,6 @@
 // src/features/voice/hooks/useSpeechRecognition.ts
 import { useEffect, useRef, useState, useCallback } from "react";
+import { useAppStore } from "../../../shared/store/useAppStore";
 
 type UseSpeechRecognitionOptions = {
   lang?: string;
@@ -101,6 +102,8 @@ export function useSpeechRecognition(options: UseSpeechRecognitionOptions = {}) 
   const start = useCallback(() => {
     if (!recognitionRef.current) return;
   
+    useAppStore.getState().playEffect("listening_start");
+
     try {
       listeningRef.current = true;
       setTimeout(() => {

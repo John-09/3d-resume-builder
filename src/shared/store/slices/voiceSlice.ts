@@ -1,7 +1,7 @@
 // src/shared/store/slices/voiceSlice.ts
 import type { VoiceSlice } from "../types";
 
-export const createVoiceSlice = (set: any): VoiceSlice => ({
+export const createVoiceSlice = (set: any, get: any): VoiceSlice => ({
   isListening: false,
   lastCommand: null,
   confidence: 0,
