@@ -273,6 +273,9 @@ export const HologramPanel: React.FC<Props> = ({
 
       // GLITCH BURST
       panelMat.uniforms.u_glitchStrength.value = 1.2;
+
+      console.log("HologramPanel opened");
+
       useAppStore.getState().playEffect("panel_open");
     }
   }, [visible]);
