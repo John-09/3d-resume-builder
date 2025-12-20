@@ -5,7 +5,7 @@ export const RootLayout = () => {
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100">
       {/* Header */}
-      <header className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur">
+      {/* <header className="flex items-center justify-between px-6 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur">
         <div className="flex items-center gap-2">
           <span className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse" />
           <h1 className="text-lg font-semibold tracking-tight">
@@ -51,7 +51,7 @@ export const RootLayout = () => {
             🔊 Voice & 🎵 Audio Enabled Demo
           </span>
         </div>
-      </header>
+      </header> */}
 
       {/* Content */}
       <main className="flex-1 flex">

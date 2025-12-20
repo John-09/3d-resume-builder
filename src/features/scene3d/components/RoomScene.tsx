@@ -16,9 +16,9 @@ export const RoomScene = () => {
       {/* Room Structure */}
       <Floor />
       <Wall position={[0, 1, -10]} /> {/* Back Wall */}
-      <Wall position={[-15, 1, 0]} rotation={[0, Math.PI / 2, 0]} />{" "}
+      {/* <Wall position={[-15, 1, 0]} rotation={[0, Math.PI / 2, 0]} />{" "} */}
       {/* Left Wall */}
-      <Wall position={[15, 1, 0]} rotation={[0, -Math.PI / 2, 0]} />{" "}
+      {/* <Wall position={[15, 1, 0]} rotation={[0, -Math.PI / 2, 0]} />{" "} */}
       {/* Right Wall */}
       {/* Cubes */}
       <PlaceholderObject position={[-12, 2, 0]} text="" />

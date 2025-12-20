@@ -77,7 +77,7 @@ const PRESETS: Record<Section | "home", CamPreset> = {
 
   skills: {
     // Mirror of projects
-    position: new THREE.Vector3(16, 5, 18),
+    position: new THREE.Vector3(16, 5, 26),
     lookAt: new THREE.Vector3(10, 4, 0),
   },
 };
